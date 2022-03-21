@@ -137,6 +137,11 @@ class PostController extends Controller
 
         $data = $request->all();
 
+        if(isset($data["image"])){
+            $img_path = Storage::put('uploads', $data["image"]);
+            $data["image"] = $img_path;
+        }
+
         if($post->title == $data['title']){
             $slug = $data['slug'];
         }else{
@@ -151,6 +156,11 @@ class PostController extends Controller
         }
 
         $data['slug'] = $slug;
+
+        if(isset($data["image"])){
+            $img_path = Storage::put('uploads', $data["image"]);
+            $data["image"] = $img_path;
+        }
 
         $post->update($data);
 
