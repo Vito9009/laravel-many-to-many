@@ -34,16 +34,31 @@
             <div class="form-group">
                 <label for="image">Image</label>
                 <input @error('image') is-invalid @enderror type="file" class="form-control-file" name="image">
-              </div>
+            </div>
 
-            <select class="form-select" aria-label="Default select example" name="category_id">
-                <option value="">Select category</option>
-                @foreach ($categories as $category)
-                    <option value="{{$category["id"]}}">
-                        {{$category["name"]}}
-                    </option>
+            <div class="form-group">
+                <select class="form-select" aria-label="Default select example" name="category_id">
+                    <option value="">Select category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{$category["id"]}}">
+                            {{$category["name"]}}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tag">Tag</label>
+                @foreach ($tags as $tag)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="{{$tag["slug"]}}" name="tags[]" value="{{$tag["id"]}}">
+                        <label class="form-check-label" for="{{$tag["slug"]}}">
+                            {{$tag["name"]}}
+                        </label>
+                    </div>
                 @endforeach
-            </select>
+            </div>
+
 
             <div class="text-center">
                 <button type="submit" class="btn btn-secondary my-5 text-center">Salva</button>

@@ -10,6 +10,12 @@
             @endif
         </div>
 
+        <div>
+            <h3>Tag</h3>
+            @foreach ($post->tags as $tag)
+                <h6>{{$tag["name"]}}</h6>
+            @endforeach
+        </div>
         <a href="{{route("admin.posts.index")}}"><button type="button" class="btn btn-secondary my-5">Torna alla home</button></a>
     </div>
 @endsection

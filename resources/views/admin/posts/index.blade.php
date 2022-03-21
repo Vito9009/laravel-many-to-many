@@ -8,6 +8,7 @@
         <th class="align-middle text-center" scope="col">Title</th>
         <th class="align-middle text-center" scope="col">Content</th>
         <th class="align-middle text-center" scope="col">Category</th>
+        <th class="align-middle text-center" scope="col">Tag</th>
         <th class="align-middle text-center" scope="col">Image</th>
         <th class="align-middle text-center" scope="col">Option</th>
         <th class="align-middle text-center" scope="col">Edit</th>
@@ -22,6 +23,11 @@
                 <td class="align-middle text-center">{{$post["title"]}}</td>
                 <td class="align-middle text-center">{{$post["content"]}}</td>
                 <td class="align-middle text-center">{{$post["category"] ? $post["category"]["name"] : '-'}}</td>
+                <td class="align-middle text-center">
+                    @foreach ($post->tags as $tag)
+                      {{$tag["name"]}}
+                    @endforeach
+                </td>
                 <td class="align-middle text-center">
                   @if (isset($post["image"]))
                     <img width="100" src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}">
